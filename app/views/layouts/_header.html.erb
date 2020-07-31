@@ -1,11 +1,18 @@
 <nav class="navbar navbar-default">
-  <div class="app-width container">
+  <div class="header__nav container">
     <ul class="nav navbar-nav navbar-left">
       <li><%= link_to "Home", root_path %></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Sign in", '#' %></li>
-      <li><%= link_to "Sign up", new_user_path %></li>
-    </ul>
+    <% if logged_in? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "My page", current_user %></li>
+        <li><%= link_to "Sign out", signout_path, method: :delete %></li>
+      </ul>
+    <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Sign in", signin_path %></li>
+        <li><%= link_to "Sign up", signup_path %></li>
+      </ul>
+    <% end %>
   </div>
 </nav>

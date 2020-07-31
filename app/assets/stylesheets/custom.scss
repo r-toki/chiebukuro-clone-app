@@ -1,7 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.app-width {
+.main {
+  max-width: 960px;
+}
+
+.header__nav {
   max-width: 960px;
 }
 
