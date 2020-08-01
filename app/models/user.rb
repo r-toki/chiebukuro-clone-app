@@ -1,7 +1,18 @@
 class User < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
 
-  # User has password, password_confirmation attrs.
-  # User has authenticate method.
+  has_many: :questions
+
+  validates :name, presence: true,
+                   uniqueness: true
+
+  validates :password, presence: true,
+                       # When created, allow_nil: false.
+                       # Because has_secure_passowrd validates.
+                       allow_nil: true,
+                       length: { minimum: 6 }
+
+  # has_secure_passowrd
+  # 1. User has password, password_confirmation attrs.
+  # 2. User has authenticate method.
   has_secure_password
 end
