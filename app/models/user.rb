@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  has_many: :questions
+  has_many :questions, dependent: :destroy
 
   validates :name, presence: true,
                    uniqueness: true
@@ -15,4 +15,5 @@ class User < ApplicationRecord
   # 1. User has password, password_confirmation attrs.
   # 2. User has authenticate method.
   has_secure_password
+
 end
