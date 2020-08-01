@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
 
   get '/signup', to: 'users#new'
-  get '/signin', to: 'sessions#new'
-  post '/signin', to: 'sessions#create'
-  delete '/signout', to: 'sessions#destroy'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
 end
