@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:create, :show]
-  # 'users#new' は get '/singup' と対応させるから必要ない？
-  resources :questions, only: [:index]
+  resources :questions, only: [:index, :new, :create]
 
   root to: 'static_pages#home'
 
