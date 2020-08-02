@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
+
   def new
+    params[:forwarding_url] && session[:forwarding_url] = params[:forwarding_url]
   end
 
   def create
@@ -17,4 +19,5 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_url
   end
+
 end

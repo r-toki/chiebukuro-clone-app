@@ -1,25 +1,12 @@
 <div class="questions-show-page">
-  <div class="question__header">
-    <h2 class="question__title">
-      <%= @question.title %>
-    </h2>
-    <div>
-      <span class="quesion__user">
-        <%= @question.user.name %>
-      </span>
-      /
-      <span class="question__created-time">
-        <%= @question.created_at.strftime('%F %R') %>
-      </span>
-    </div>
-  </div>
-  <hr>
-  <div class="question__body">
-    <p class="question__content">
-      <%= @question.content %>
-    </p>
-  </div>
-  <div class="answers">
-    <h3>0 Answers</h3>
-  </div>
+  <%= render partial: "question", object: @question %>
+  <h3><%= pluralize(@question.answers.count, 'Answer') %></h3>
+  <%= render partial: "answer", collection: @question.answers %>
+  <% if logged_in? %>
+    <%= render partial: "answer_form" %>
+  <% else %>
+    <h3>
+      <%= link_to "Log in to Answer", login_path(forwarding_url: request.original_url) %>
+    </h3>
+  <% end %>
 </div>

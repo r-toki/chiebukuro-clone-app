@@ -1,14 +1,11 @@
-<li class="list-group-item">
-  <h4>
-    <%= question.title %>
-  </h4>
-  <div class="text-muted">
-    <span>
-      0 answers
-    </span>
+<div>
+  <div class="question__header">
+    <h2><%= question.title %></h2>
+    <span><%= question.user.name %></span>
     /
-    <span>
-      Posted <%= time_ago_in_words(question.created_at) %> ago.
-    </span>
+    <span><%= question.created_at.strftime('%F %R') %></span>
   </div>
-</li>
+  <div class="question__content">
+    <p><%= question.content %></p>
+  </div>
+</div>

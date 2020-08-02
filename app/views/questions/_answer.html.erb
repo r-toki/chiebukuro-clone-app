@@ -1,0 +1,10 @@
+<div>
+  <div class="answer__header">
+    <span><%= answer.user.name %></span>
+    /
+    <span><%= answer.created_at.strftime('%F %R') %></span>
+  </div>
+  <div class="answer__content">
+    <p><%= answer.content %></p>
+  </div>
+</div>

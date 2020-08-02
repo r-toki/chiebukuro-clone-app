@@ -1,0 +1,13 @@
+<div>
+  <h3>Post Your Answer</h3>
+  <%= form_with(url: answers_path, scope: :answer, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, rows: 10, class: "form-control" %>
+    </div>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :question_id, value: @question.id %>
+
+    <%= f.submit "Post", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+<li class="list-group-item">
+  <%= link_to question do %>
+    <h4><%= question.title %></h4>
+  <% end %>
+  <div class="text-muted">
+    <span>
+      <%= pluralize(question.answers.count, 'answer') %>
+    </span>
+    /
+    <span>
+      <%= question.created_at.strftime('%F') %>
+    </span>
+  </div>
+</li>

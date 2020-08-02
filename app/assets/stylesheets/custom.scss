@@ -32,14 +32,19 @@
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.question__content {
-  font-size: large;
-}
-
-.questions-show-page hr {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-color: gray;
+  hr {
+    border-color: gray;
+  }
+  .question__header {
+    margin-bottom: 1rem;
+  }
+  .question__content {
+    font-size: large;
+  }
+  .answer__header {
+    margin-bottom: 1rem;
+  }
+  .answer__content {
+    font-size: large;
+  }
 }
