@@ -1,6 +1,6 @@
-<h1>Post a new quesion</h1>
+<div class="new-page">
+  <h1 class="page__title">Post a new quesion</h1>
 
-<div class="form">
   <%= form_with(model: @question, local: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 

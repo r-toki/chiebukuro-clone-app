@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:create, :show]
-  resources :questions, only: [:index, :new, :create]
+  resources :questions, only: [:index, :new, :create, :show]
 
   root to: 'static_pages#home'
 

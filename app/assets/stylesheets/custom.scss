@@ -17,13 +17,29 @@
   }
 }
 
-.questions .index-page__title {
-  text-align: center;
-  margin-top: 0;
-}
-
 .new-page {
   max-width: 480px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.page__title {
+  text-align: center;
+  margin-top: 0;
+}
+
+.questions-show-page {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.question__content {
+  font-size: large;
+}
+
+.questions-show-page hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-color: gray;
 }
