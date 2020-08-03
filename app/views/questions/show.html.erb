@@ -1,12 +1,15 @@
 <div class="questions-show-page">
   <%= render partial: "question", object: @question %>
+  <% if !@question.is_resolved && current_user == @question.user %>
+    <%= link_to "Resolve", question_path(@question, is_resolved: 1), method: "put", class: "btn btn-success", role: "button" %>
+  <% end %>
   <h3><%= pluralize(@question.answers.count, 'Answer') %></h3>
   <%= render partial: "answer", collection: @question.answers %>
-  <% if logged_in? %>
-    <%= render partial: "answer_form" %>
-  <% else %>
-    <h3>
-      <%= link_to "Log in to Answer", login_path(forwarding_url: request.original_url) %>
-    </h3>
+  <% if !@question.is_resolved %>
+    <% if logged_in? %>
+      <%= render partial: "answer_form" %>
+    <% else %>
+      <h3><%= link_to "Log in to Answer", login_path(forwarding_url: request.original_url) %></h3>
+    <% end %>
   <% end %>
 </div>

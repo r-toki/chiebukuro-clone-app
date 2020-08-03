@@ -30,6 +30,14 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def update
+    # params.require と merge したい
+    question = Question.find(params[:id])
+    is_resolved = params[:is_resolved] == '1'
+    question.update!(is_resolved: is_resolved)
+    redirect_to question
+  end
+
   private
 
     def question_params
