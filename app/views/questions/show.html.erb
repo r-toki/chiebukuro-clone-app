@@ -1,4 +1,7 @@
 <div class="questions-show-page">
+  <% if @question.is_resolved %>
+    <h3 class="resolved-headline">Resolved Question</h3>
+  <% end %>
   <%= render partial: "question", object: @question %>
   <% if !@question.is_resolved && current_user == @question.user %>
     <%= link_to "Resolve", question_path(@question, is_resolved: 1), method: "put", class: "btn btn-success", role: "button" %>
