@@ -1,6 +1,9 @@
-<h1>Editing User</h1>
+<% provide(:button_text, 'Edit') %>
 
-<%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="centering-div max-width-24">
+  <h1>Editing User</h1>
+  <%= render 'form', user: @user %>
+  <br>
+  <%= link_to 'Show', @user %> |
+  <%= link_to 'Back', users_path %>
+</div>

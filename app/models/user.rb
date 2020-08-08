@@ -9,7 +9,7 @@ class User < ApplicationRecord
   #   3. password == password_confirmation であること
 
   validates :name, presence: true,
-                   uniquness: true
+                   uniqueness: true
 
   validates :password, presence: true,
                        allow_nil: true,
