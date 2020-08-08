@@ -18,6 +18,8 @@ rails g controller Sessions new create destroy
   button クリックのトリガーで update のアクションへ。form_with の submit button だけ使って、is_resolved は hidden tag に入れる？
 - view のコンポーネント化を意識して綺麗に作る。css クラスの名前の付け方に統一感を持たせる。
 - テストコードを書くべき。
+- before_action を全く書いてない。とりあえず認可が必要なアクションに対して行う。
+- 本番環境で ssl を使う
 
 ## 疑問点
 
