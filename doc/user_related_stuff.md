@@ -2,7 +2,8 @@
 
 ### user
 
-- model へ has_secure_password を追加
-- model へ validation を追加
+- model へ has_secure_password を追加 -> done
+- model へ validation を追加 -> done
 - sign up 機能
-- db 側でも name に対してユニーク制約を課す
+- db user-name に対してユニーク制約を課す -> done
+- db user-{name/password_digest} に対して not null を課す -> done
