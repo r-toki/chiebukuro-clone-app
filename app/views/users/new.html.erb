@@ -1,8 +1,8 @@
-<% provide(:button_text, 'Create') %>
+<% provide(:button_text, 'Sign up') %>
 
 <div class="centering-div max-width-24">
-  <h1>New User</h1>
+  <h1>Sign up</h1>
   <%= render 'form', user: @user %>
   <br>
-  <%= link_to 'Back', users_path %>
+  Already have an account? <%= link_to 'Log in', login_path %>
 </div>
