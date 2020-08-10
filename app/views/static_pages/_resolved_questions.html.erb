@@ -1,9 +1,0 @@
-<h3>Resolved Questions</h3>
-<ul class="list-group">
-  <%= render partial: "questions/question_title", collection: @resolved_questions, as: :question %>
-  <li class="list-group-item clearfix">
-    <div class="pull-right">
-      <%= link_to "See more", questions_path(is_resolved: "true") %>
-    </div>
-  </li>
-</ul>
