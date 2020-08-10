@@ -1,0 +1,6 @@
+<div class="centering-div max-width-34">
+  <h1><%= index_page_title params[:is_resolved] %></h1>
+  <ul class="list-group">
+    <%= render partial: "question_summary", collection: @questions, as: :question %>
+  </ul>
+</div>

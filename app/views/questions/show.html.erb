@@ -1,0 +1,4 @@
+<div class="centering-div max-width-34">
+  <%= render partial: "question_detail", object: @question, as: :question %>
+  <%= link_to "Back to #{index_page_title @question.is_resolved.to_s}" , questions_path(is_resolved: @question.is_resolved.to_s) %>
+</div>

@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :questions
+
   has_secure_password
   # 1. password, password_confirmation 属性の追加
   # 2. authenticate method の追加

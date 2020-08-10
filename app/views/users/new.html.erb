@@ -4,5 +4,5 @@
   <h1>Sign up</h1>
   <%= render 'form', user: @user %>
   <br>
-  Already have an account? <%= link_to 'Log in', login_path %>
+  Already have an account? <%= link_to 'Log in', controller: "session", action: "new", redirect_back: params[:redirect_back] %>
 </div>

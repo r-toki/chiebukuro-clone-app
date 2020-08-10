@@ -1,14 +1,5 @@
 <%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div class="alert alert-danger">
-      <%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_messages', object: form.object %>
 
   <div class="form-group">
     <%= form.label :name %>
@@ -24,6 +15,8 @@
     <%= form.label :password_confirmation, "Confirmation" %>
     <%= form.password_field :password_confirmation, class: "form-control" %>
   </div>
+
+  <%= hidden_field_tag 'redirect_back', params[:redirect_back] %>
 
   <div class="actions">
     <%= form.submit yield(:button_text), class: "btn btn-primary" %>

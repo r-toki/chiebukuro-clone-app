@@ -11,8 +11,10 @@
       <%= form.password_field :password, class: "form-control" %>
     </div>
 
+    <%= hidden_field_tag 'redirect_back', params[:redirect_back] %>
+
     <%= form.submit "Log in", class: "btn btn-primary" %>
   <% end %>
   <br>
-  Don't have an account? <%= link_to "Sign up", signup_path %>
+  Don't have an account? <%= link_to "Sign up", controller: 'users', action: 'new', redirect_back: params[:redirect_back] %>
 </div>
