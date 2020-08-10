@@ -1,8 +1,0 @@
-<% provide(:button_text, 'Sign up') %>
-
-<div class="centering-div max-width-24">
-  <h1>Sign up</h1>
-  <%= render 'form', user: @user %>
-  <br>
-  Already have an account? <%= link_to 'Log in', controller: "session", action: "new", redirect_back: params[:redirect_back] %>
-</div>
