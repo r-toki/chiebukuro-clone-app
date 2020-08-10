@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @posted_questions = @user.questions
+    @answered_questions = Question.joins(
+      "INNER JOIN answers ON answers.question_id = questions.id WHERE answers.user_id = #{params[:id]}"
+    ).uniq
   end
 
   def new

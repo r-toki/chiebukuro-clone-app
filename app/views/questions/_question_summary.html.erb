@@ -3,7 +3,7 @@
     <%= link_to question.title, question %>
   </h4>
   <span>
-    answers /
+    <%= pluralize(question.answers.length, 'answer') %> /
     <%= question.created_at.strftime('%F %R') %>
   </span>
 </li>
