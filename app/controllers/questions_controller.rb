@@ -27,6 +27,11 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def update
+    @question.update!(question_params)
+    redirect_to @question
+  end
+
   private
 
     def set_question
