@@ -1,17 +1,22 @@
-<div class="question-detail__header">
-  <h3><%= question.title %></h3>
-  <div class="clearfix">
-    <div class="pull-left question-detail__question-info">
-      <%= link_to question.user.name, user_path(question.user.id) %> /
-      <%= question.created_at.strftime('%F %R') %>
-    </div>
-    <% if !question.is_resolved && current_user == question.user %>
-      <div class="pull-right">
-        <%= form_with(url: question_path, scope: :question, local: true, method: :put) do |form| %>
-          <%= form.hidden_field :is_resolved, value: true %>
-          <%= form.submit "Resolve", class: "btn btn-success" %>
-        <% end %>
+<div class="question-detail">
+  <div class="question-detail__header">
+    <h3><%= question.title %></h3>
+    <div class="clearfix">
+      <div class="pull-left question-detail__question-info">
+        <%= link_to question.user.name, user_path(question.user.id) %> /
+        <%= question.created_at.strftime('%F %R') %>
       </div>
-    <% end %>
+      <% if !question.is_resolved && current_user == question.user %>
+        <div class="pull-right">
+          <%= form_with(url: question_path, scope: :question, local: true, method: :put) do |form| %>
+            <%= form.hidden_field :is_resolved, value: true %>
+            <%= form.submit "Resolve", class: "btn btn-success" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="question-detail__content">
+    <%= question.content %>
   </div>
 </div>

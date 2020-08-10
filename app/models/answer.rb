@@ -1,11 +1,10 @@
-class Question < ApplicationRecord
+class Answer < ApplicationRecord
 
   belongs_to :user
-  has_many :answers
+  belongs_to :question
 
   default_scope -> { order(created_at: :desc) }
 
-  validates :title, presence: true
   validates :content, presence: true
 
 end

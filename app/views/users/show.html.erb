@@ -1,9 +1,11 @@
 <div class="centering-div max-width-34">
-  <p>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </p>
-
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>
+  <h3><%= @user.name %>'s Page</h3>
+  <h3>Posted Questions</h3>
+  <ul class="list-group">
+    <%= render partial: "questions/question_summary", collection: @posted_questions, as: :question %>
+  </ul>
+  <h3>Answerd Questions</h3>
+    <ul class="list-group">
+    <%= render partial: "questions/question_summary", collection: @answered_questions, as: :question %>
+  </ul>
 </div>
