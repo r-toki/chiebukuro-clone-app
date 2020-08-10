@@ -15,10 +15,9 @@ module SessionHelper
   end
 
   def logged_in_user
-    unless logged_in?
-      session[:redirect_back] = request.original_url if request.get?
-      flash[:danger] = "Please log in."
-      redirect_to login_url
+    if current_user.nil?
+      redirect_back = request.original_url if request.get?
+      redirect_to login_path(redirect_back: redirect_back)
     end
   end
 
@@ -28,8 +27,11 @@ module SessionHelper
   end
 
   def redirect_back_or(default)
-    redirect_to(session[:redirect_back] || default)
-    session.delete(:redirect_back)
+    if params[:redirect_back].empty?
+      redirect_to default
+    else
+      redirect_to params[:redirect_back]
+    end
   end
 
 end

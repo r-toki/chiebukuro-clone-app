@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
+  before_action :logged_in_user, only: [:new, :create, :update]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:new]
 
   def index
     @questions = get_questions_with_query
