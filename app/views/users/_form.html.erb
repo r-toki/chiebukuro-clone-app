@@ -16,6 +16,8 @@
     <%= form.password_field :password_confirmation, class: "form-control" %>
   </div>
 
+  <%= hidden_field_tag 'redirect_back', params[:redirect_back] %>
+
   <div class="actions">
     <%= form.submit yield(:button_text), class: "btn btn-primary" %>
   </div>

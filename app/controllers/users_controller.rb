@@ -2,13 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
-  # GET /users.json
   def index
     @users = User.all
   end
 
   # GET /users/1
-  # GET /users/1.json
   def show
   end
 
@@ -22,18 +20,17 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, flash: { success: 'User was successfully created.'}
+      log_in @user
+      redirect_back_or @user
     else
       render :new
     end
   end
 
   # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     if @user.save
       redirect_to @user, flash: { success: 'User was successfully updated.'}
@@ -43,7 +40,6 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
     redirect_to @user, flash: { success: 'User was successfully destroyed.'}

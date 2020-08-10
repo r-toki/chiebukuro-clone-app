@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   post '/login', to: 'session#create'
   delete '/logout', to: 'session#destroy'
 
+  post '/static_pages/create_question', to: 'static_pages#create_question'
+
   resources :users
+  resources :questions
 
 end
