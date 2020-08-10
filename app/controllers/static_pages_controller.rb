@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
 
   def home
+    @resolved_questions = Question.where(is_resolved: true)
+    @unresolved_questions = Question.where(is_resolved: false)
   end
 
   def create_question
