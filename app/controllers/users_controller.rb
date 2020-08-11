@@ -7,8 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @posted_questions = @user.questions
+    # 1. user が回答した質問　かつ　user が投稿した質問ではない
     @answered_questions = Question.joins(
-      "INNER JOIN answers ON answers.question_id = questions.id WHERE answers.user_id = #{params[:id]}"
+      "INNER JOIN answers ON answers.question_id = questions.id
+      WHERE answers.user_id = #{params[:id]} and questions.user_id != #{params[:id]}"
     ).uniq
   end
 
