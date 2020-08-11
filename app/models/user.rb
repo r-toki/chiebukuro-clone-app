@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
-  has_many :questions
-  has_many :answers
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
 
   has_secure_password
   # 1. password, password_confirmation 属性の追加

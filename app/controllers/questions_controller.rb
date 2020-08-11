@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    @questions = get_questions_with_query
+    @questions = get_questions_with_query.paginate(page: params[:page], per_page: 5)
   end
 
   def show
