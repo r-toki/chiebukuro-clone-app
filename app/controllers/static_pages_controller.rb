@@ -6,7 +6,9 @@ class StaticPagesController < ApplicationController
   end
 
   def create_question
-    session[:question_content] = params[:question][:content]
+    if params[:question] && params[:question][:content]
+      session[:question_content] = params[:question][:content]
+    end
     redirect_to new_question_url
   end
 

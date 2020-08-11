@@ -2,6 +2,7 @@
   <div class="centering-div max-width-44">
     <ul class="nav navbar-nav navbar-left">
       <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "+ Ask", static_pages_create_question_path, method: "post" %></li>
     </ul>
     <% if logged_in? %>
       <ul class="nav navbar-nav navbar-right">
