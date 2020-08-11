@@ -25,9 +25,9 @@ rails g controller Sessions new create destroy
 
 - model で行う validation は DB で課せられる制約を含むべきか？
 - model, controller, helper の住み分けは？
-- 変数のスコープと寿命は？ 例えば rails tutorial の @current_user が謎。
+- 変数のスコープと寿命は？ 例えば rails tutorial の @current_user が再度参照できるのがよくわからない。
 - redirect する時の params の引き継ぎ方は？ login / signup を行き来する時に redirect_back_path のような params を引き継ぎたい。
-- model と db のテーブルは1対1に対応させるのか？各テーブルを結合することによって意味を持つ？大きなプロジェクトならば user が持つ情報は複数のテーブルに散らばるはず。
+- model と db のテーブルは 1 対 1 に対応させるのか？各テーブルを結合することによって意味を持つ？大きなプロジェクトならば user が持つ情報は複数のテーブルに散らばるはず。
 
 ## よく確認したくなるもの
 

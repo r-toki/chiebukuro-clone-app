@@ -16,6 +16,7 @@ module SessionHelper
 
   def logged_in_user
     if current_user.nil?
+      flash[:danger] = "Please Log in"
       redirect_back = request.original_url if request.get?
       redirect_to login_path(redirect_back: redirect_back)
     end
