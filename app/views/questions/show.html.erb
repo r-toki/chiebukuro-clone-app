@@ -1,7 +1,19 @@
-<div class="conteiner max-width-34">
-  <h3><%= @question.title %></h3>
-  <%= @question.user.name %>
-  <p>
-    <%= @question.content %>
-  </p>
+<div class="container max-width-34">
+  <%= render partial: "question_detail", object: @question, as: :question %>
+
+  <% if logged_in? %>
+    <%= render partial: "answer_new_form" %>
+  <% else %>
+    <h4>
+      <%= link_to "Log in to Answer", login_path(redirect_back: original_fullpath) %>
+    </h4>
+  <% end %>
+
+  <h3><%= pluralize(@question.answers.length, 'Answer') %></h3>
+  <%= render partial: "answer", collection: @question.answers %>
+
+  <h4>
+    <%= link_to "Back to #{index_page_title @question.is_resolved.to_s}",
+        questions_path(is_resolved: @question.is_resolved.to_s) %>
+  </h4>
 </div>

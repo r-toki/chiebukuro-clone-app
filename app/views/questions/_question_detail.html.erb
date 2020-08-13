@@ -1,0 +1,6 @@
+<h3><%= question.title %></h3>
+<span>
+  <%= link_to question.user.name, user_path(question.user.id) %> /
+  <%= question.created_at.strftime('%F %R') %>
+</span>
+<p><%= question.content %></p>

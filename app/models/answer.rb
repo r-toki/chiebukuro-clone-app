@@ -1,9 +1,8 @@
-class Question < ApplicationRecord
+class Answer < ApplicationRecord
 
   belongs_to :user
-  has_many :answers, dependent: :destroy
+  belongs_to :question
 
-  validates :title, presence: true
   validates :content, presence: true
 
   default_scope -> { order(created_at: :desc) }
