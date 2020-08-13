@@ -10,7 +10,9 @@
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
     <div class="container max-width-44">
+      <%= render 'layouts/flash' %>
       <%= yield %>
     </div>
   </body>

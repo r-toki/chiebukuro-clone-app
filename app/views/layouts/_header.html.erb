@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default">
+  <div class="container max-width-44">
+    <ul class="nav navbar-nav navbar-left">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "+ Ask", new_question_path(question: { dummy: nil } ) %></li>
+    </ul>
+    <% if logged_in? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to current_user.name, current_user %></li>
+        <li><%= link_to "Log out", logout_path, method: :delete %></li>
+      </ul>
+    <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Log in", login_path %></li>
+        <li><%= link_to "Sign up", signup_path %></li>
+      </ul>
+    <% end %>
+  </div>
+</nav>

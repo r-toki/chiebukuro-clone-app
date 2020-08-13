@@ -1,9 +1,9 @@
 # mvp-third の機能仕様とその見積もり
 
 - ユーザー登録<br>
-  1h -> 45m
+  60min -> 45m
 - ログイン/ログアウト<br>
-  3h
+  180min -> 90min
 - 質問投稿<br>
   2h
 - 質問一覧画面（解決済み/未解決に分ける & ページング付き）<br>
@@ -37,7 +37,7 @@
 - users<br>
   new, create, show
 - questions<br>
-  index, new, create, show, edit, update, destroy
+  index, new, create, show, update, destroy
 - session<br>
   new, create, destroy
 

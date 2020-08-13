@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  has_many :questions
+  has_many :questions, dependent: :destroy
 
   has_secure_password
 
@@ -10,4 +10,5 @@ class User < ApplicationRecord
   validates :password, presence: true,
                        allow_nil: true,
                        length: { minimum: 6 }
+
 end
