@@ -1,0 +1,6 @@
+<div class="container max-width-34">
+  <%= render partial: "header", object: @user, as: :user %>
+  <ul class="list-group">
+    <%= render partial: "questions/question_summary", collection: @questions, as: :question %>
+  </ul>
+</div>

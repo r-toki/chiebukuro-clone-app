@@ -13,3 +13,31 @@
 .max-width-24 {
   max-width: 480px;
 }
+
+// users
+.user-header {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f8f8f8;
+  }
+  li {
+    float: left;
+  }
+  li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+  li a:hover:not(.active) {
+    background-color: #ddd;
+  }
+  li a.active {
+    background-color: #ddd;
+  }
+}

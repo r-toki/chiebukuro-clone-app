@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   post '/login', to: 'session#create'
   delete '/logout', to: 'session#destroy'
 
+  get '/users/questions'
+
   resources :users, only: [:create, :show]
   resources :questions, only: [:index, :new, :create, :show, :update, :destroy]
   resources :answers, only: [:create, :update, :destroy]
+
 
 end

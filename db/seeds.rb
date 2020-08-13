@@ -28,3 +28,17 @@ question_titles.each do |title|
     updated_at: created_at
   )
 end
+
+for i in 0..number_of_answers
+  user_id = 1 + rand(user_names.length)
+  question_id = 1 + rand(question_titles.length)
+  question = Question.find_by_id(question_id)
+  created_at = rand(question.created_at..time_now)
+  Answer.create!(
+    content: Faker::Lorem.sentence(word_count: rand(1..5)),
+    user_id: user_id,
+    question_id: question_id,
+    created_at: created_at,
+    updated_at: created_at
+  )
+end

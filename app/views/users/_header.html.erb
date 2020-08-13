@@ -1,0 +1,7 @@
+<div class="user-header">
+  <h1><%= user.name %>'s Page</h1>
+  <ul>
+    <li><%= link_to "Posted", users_questions_path(user_id: user.id, questions_type: "posted"), class: current_questions_type?("posted") %></li>
+    <li><%= link_to "Answered", users_questions_path(user_id: user.id, questions_type: "answered"), class: current_questions_type?("answered") %></li>
+  </ul>
+</div>

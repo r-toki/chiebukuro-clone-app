@@ -1,7 +1,7 @@
 <li class="list-group-item">
   <h4><%= link_to(question.title, question) %></h4>
   <span>
-    <%#= pluralize(question.answers.length, 'answer') %> /
+    <%= pluralize(question.answers.length, 'answer') %> /
     <%= question.created_at.strftime('%F %R') %>
   </span>
 </li>
