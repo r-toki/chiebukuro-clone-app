@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
   private
 
     def question_params
-      params.require(:question).permit(:title, :content, :best_answer_id)
+      params.require(:question).permit(:title, :content, :is_resolved)
     end
 
     def get_questions_with_query

@@ -1,0 +1,7 @@
+<h3>Ask a Question!</h3>
+<%= form_with(url: new_question_path, method: :get, scope: :question, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+  <%= f.submit "Ask", class: "btn btn-primary" %>
+<% end %>
