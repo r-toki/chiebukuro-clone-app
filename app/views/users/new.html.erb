@@ -5,14 +5,22 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>
     </div>
+
     <div class="form-group">
       <%= f.label :password %>
       <%= f.password_field :password, class: "form-control" %>
     </div>
+
     <div class="form-group">
       <%= f.label :pasword_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
+
+    <%= hidden_field_tag 'redirect_back', params[:redirect_back] %>
+
     <%= f.submit "Sign up", class: "btn btn-primary" %>
   <% end %>
+  <br>
+  Already have an account?
+  <%= link_to 'Log in', login_path(redirect_back: params[:redirect_back]) %>
 </div>
