@@ -1,0 +1,8 @@
+<div class="container max-width-34">
+  <h1><%= index_page_title %></h1>
+  <%= will_paginate %>
+  <ul class="list-group">
+    <%= render partial: "questions/index_partial/question_summary", collection: @questions, as: :question %>
+  </ul>
+  <%= will_paginate %>
+</div>
