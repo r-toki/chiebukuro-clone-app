@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  # declare
+  # declare a controller method as a helper
   helper_method :current_user, :logged_in?
 
   # session 関連
@@ -39,11 +39,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def path_exists?(path)
-    Rails.application.routes.recognize_path(path)
-    true
-  rescue ActionController::RoutingError
-    false
-  end
+  private
+
+    def path_exists?(path)
+      Rails.application.routes.recognize_path(path)
+      true
+    rescue ActionController::RoutingError
+      false
+    end
 
 end
