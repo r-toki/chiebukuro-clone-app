@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
 
+  before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
 
   def create
@@ -10,9 +11,6 @@ class AnswersController < ApplicationController
       flash[:danger] = "Failed to answer this question."
     end
     redirect_to answer.question
-  end
-
-  def update
   end
 
   def destroy

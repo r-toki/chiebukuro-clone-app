@@ -3,5 +3,8 @@
   <span>
     <%= pluralize(question.answers.length, 'answer') %> /
     <%= question.created_at.strftime('%F %R') %>
+    <% if question.is_resolved %>
+      / <span class="success-tag">resolved</span>
+    <% end %>
   </span>
 </li>

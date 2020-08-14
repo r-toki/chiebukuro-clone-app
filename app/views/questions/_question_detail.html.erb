@@ -2,5 +2,11 @@
 <span>
   <%= link_to question.user.name, user_path(question.user.id) %> /
   <%= question.created_at.strftime('%F %R') %>
+  <% if question.is_resolved %>
+    / <span class="success-tag">&#x2705; Resolved</span>
+  <% end %>
+  <% if question.answers.count == 0 && current_user == question.user %>
+    / <%= link_to "Delete", question, method: :delete %>
+  <% end %>
 </span>
 <p><%= question.content %></p>

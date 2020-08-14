@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
 
   before_action :logged_in_user, only: [:new, :create, :destroy]
+  before_action :correct_user, only: :destroy
 
   def index
     @questions = get_questions_with_query.paginate(page: params[:page], per_page: 10)
@@ -36,6 +37,11 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    if @question.answers.count == 0
+      @question.destroy
+      flash[:success] = "Question deleted"
+    end
+      redirect_to @question.user || root_url
   end
 
   private
@@ -61,6 +67,11 @@ class QuestionsController < ApplicationController
       else
         @question.answers
       end
+    end
+
+    def correct_user
+      @question = current_user.questions.find_by(id: params[:id])
+      redirect_to root_url if @question.nil?
     end
 
 end

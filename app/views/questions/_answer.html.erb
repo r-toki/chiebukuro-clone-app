@@ -2,7 +2,7 @@
   <%= link_to answer.user.name, answer.user %> /
   <%= answer.created_at.strftime('%F %R') %>
   <% if @question.is_resolved && @question.best_answer.answer_id == answer.id %>
-    / <span class="best-answer-tag">&#x2705; Best Answer</span>
+    / <span class="success-tag">&#x2705; Best Answer</span>
   <% end %>
   <% if !@question.is_resolved && current_user == answer.user %>
     / <%= link_to 'Delete', answer, method: :delete %>
