@@ -2,11 +2,11 @@ time_now  = Time.now
 
 user_names = ["Nao", "Megu", "Kaede"]
 question_titles =  File.read(Rails.root.join('db', 'random_questions.txt')).split("\n")
-number_of_answers = 100
+number_of_answers = 30
 
 user_names.each do |name|
   created_at = Time.now - (3*365).days
-  User.create!(
+  User.create(
     name: name,
     password: "password",
     password_confirmation: "password",
@@ -19,10 +19,9 @@ question_titles.each do |title|
   user_id = 1 + rand(user_names.length)
   user = User.find_by_id(user_id)
   created_at = rand(user.created_at..time_now)
-  Question.create!(
+  Question.create(
     title: title,
     content: Faker::Lorem.sentence(word_count: rand(1..5)),
-    # is_resolved: [true, false].sample,
     is_resolved: false,
     user_id: user_id,
     created_at: created_at,
@@ -35,11 +34,22 @@ for i in 0..number_of_answers
   question_id = 1 + rand(question_titles.length)
   question = Question.find_by_id(question_id)
   created_at = rand(question.created_at..time_now)
-  Answer.create!(
+  Answer.create(
     content: Faker::Lorem.sentence(word_count: rand(1..5)),
     user_id: user_id,
     question_id: question_id,
     created_at: created_at,
     updated_at: created_at
   )
+end
+
+for i in 1..question_titles.length
+  question = Question.find_by_id(i)
+  if question.answers.count != 0
+    if [true, false].sample
+      best_answer_id = question.answers.sample.id
+      question.update(is_resolved: true)
+      BestAnswer.create(question_id: question.id, answer_id: best_answer_id)
+    end
+  end
 end
