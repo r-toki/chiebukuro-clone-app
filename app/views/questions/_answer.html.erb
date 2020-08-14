@@ -1,8 +1,14 @@
 <span>
   <%= link_to answer.user.name, answer.user %> /
   <%= answer.created_at.strftime('%F %R') %>
+  <% if @question.is_resolved && @question.best_answer.answer_id == answer.id %>
+    / <span class="best-answer-tag">&#x2705; Best Answer</span>
+  <% end %>
 </span>
 <p>
   <%= answer.content %>
 </p>
+<% if !@question.is_resolved && current_user == @question.user %>
+  <%= render partial: 'best_answer_choosing_button', object: answer, as: :answer %>
+<% end %>
 <br>

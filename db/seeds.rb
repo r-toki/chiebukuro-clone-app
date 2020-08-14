@@ -2,7 +2,7 @@ time_now  = Time.now
 
 user_names = ["Nao", "Megu", "Kaede"]
 question_titles =  File.read(Rails.root.join('db', 'random_questions.txt')).split("\n")
-number_of_answers = 30
+number_of_answers = 100
 
 user_names.each do |name|
   created_at = Time.now - (3*365).days
@@ -22,7 +22,8 @@ question_titles.each do |title|
   Question.create!(
     title: title,
     content: Faker::Lorem.sentence(word_count: rand(1..5)),
-    is_resolved: [true, false].sample,
+    # is_resolved: [true, false].sample,
+    is_resolved: false,
     user_id: user_id,
     created_at: created_at,
     updated_at: created_at

@@ -1,0 +1,9 @@
+<div class="clearfix">
+  <div class="pull-right">
+    <%= form_with(url: question_path, scope: :question, local: true, method: :put) do |f| %>
+      <%= f.hidden_field :is_resolved, value: true %>
+      <%= f.hidden_field :best_answer_id, value: answer.id %>
+      <%= f.submit "Best Answer!", class: "btn best-answer-choosing-button" %>
+    <% end %>
+  </div>
+</div>

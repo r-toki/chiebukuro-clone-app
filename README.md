@@ -49,3 +49,5 @@
   title:string content:text is_resolved:boolean user:references
 - Answer<br>
   content:text user:references question:references
+- BestAnswer<br>
+  question:reference answer:reference
