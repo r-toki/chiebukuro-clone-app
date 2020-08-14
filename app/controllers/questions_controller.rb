@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.build(question_params)
     if @question.save
-      flash[:success] = "Posted question!"
+      flash[:success] = "Posted question"
       redirect_to @question
     else
       render :new
@@ -33,6 +33,9 @@ class QuestionsController < ApplicationController
     @question.update(question_params)
     BestAnswer.create(question_id: params[:id], answer_id: params[:question][:best_answer_id])
     redirect_to @question
+  end
+
+  def destroy
   end
 
   private

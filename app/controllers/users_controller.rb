@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    redirect_to users_questions_path(user_id: params[:id], questions_type: "posted")
   end
 
   def questions
