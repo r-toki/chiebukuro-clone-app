@@ -2,7 +2,9 @@ class AnswersController < ApplicationController
 
   def create
     answer = current_user.answers.build(answer_params)
-    unless answer.save
+    if answer.save
+      flash[:success] = "Posted answer!"
+    else
       flash[:danger] = "Failed to answer this question."
     end
     redirect_to answer.question

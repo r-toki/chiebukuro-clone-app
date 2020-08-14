@@ -16,6 +16,7 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.build(question_params)
     if @question.save
+      flash[:success] = "Posted question!"
       redirect_to @question
     else
       render :new
@@ -24,7 +25,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers
+    @answers = get_answers
   end
 
   def update
@@ -47,6 +48,15 @@ class QuestionsController < ApplicationController
         Question.where(is_resolved: false)
       else
         Question.all
+      end
+    end
+
+    def get_answers
+      if @question.is_resolved
+        best_answer_id = @question.best_answer.answer_id
+        Answer.where(id: best_answer_id) + @question.answers.where.not(id: best_answer_id)
+      else
+        @question.answers
       end
     end
 
