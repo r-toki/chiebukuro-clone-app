@@ -8,9 +8,11 @@
     / <%= link_to 'Delete', answer, method: :delete %>
   <% end %>
 </span>
+
 <p>
   <%= answer.content %>
 </p>
+
 <% if !@question.is_resolved && current_user == @question.user %>
   <%= render partial: 'best_answer_choosing_button', object: answer, as: :answer %>
 <% end %>
