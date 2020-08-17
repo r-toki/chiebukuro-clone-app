@@ -22,4 +22,4 @@
 ### 疑問
 
 - answers table に best column があるならば、questions table に resolved は要らない？
-- questions/1 で render されるページ answer_new_form があっていいのか？仕方がない気がするが。
+- questions/1 で render されるページに answer_new_form があっていいのか？仕方がない気がするが。
