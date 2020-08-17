@@ -1,24 +1,25 @@
-# README
+### Controller
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- static_pages
+  - home
+- users
+  - new, create, show
+  - questions
+    - index
+- sessions
+  - new, create, destroy
+- questions
+  - index, new, create, show, update, destroy
+  - answers
+    - create, update, destroy
 
-Things you may want to cover:
+### Model
 
-* Ruby version
+- rails g model User name:string password_digest:string
+- rails g model Question title:string content:text user:references
+- rails g model Answer content:text best:boolean user:references question:references
 
-* System dependencies
+### 疑問
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- answers table に best column があるならば、questions table に resolved は要らない？
+- questions/1 で render されるページ answer_new_form があっていいのか？仕方がない気がするが。
