@@ -10,4 +10,6 @@
     = javascript_pack_tag 'application'
     = stylesheet_pack_tag 'application'
   %body
-    = yield
+    = render 'layouts/header'
+    .max-width-44.mx-auto.px-3.py-3
+      = yield

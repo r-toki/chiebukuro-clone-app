@@ -1,0 +1,10 @@
+.max-width-24.mx-auto
+  %h1.text-center Log in
+  = form_with(url: sessions_path, scope: :session, local: true) do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: "form-control"
+    .form-group
+      = f.label :password
+      = f.password_field :password, class: "form-control"
+    = f.submit "Log in", class: "btn btn-primary"
