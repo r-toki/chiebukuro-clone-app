@@ -1,0 +1,7 @@
+%li.list-group-item
+  %h6.card-subtitle.text-muted.mt-1.mb-2
+    %span
+      = link_to answer.user.name, answer.user
+      \/
+      = "answerd #{answer.created_at.strftime('%F %R')}"
+  %p.card-text= answer.content

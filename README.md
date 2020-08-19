@@ -10,8 +10,8 @@
   - new, create, destroy
 - questions
   - index, new, create, show, update, destroy
-  - answers
-    - create, update, destroy
+- answers
+  - create, update, destroy
 
 ### Model
 
