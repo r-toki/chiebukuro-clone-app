@@ -29,8 +29,11 @@ class ApplicationController < ActionController::Base
 
   def redirect_back_or(default)
     redirect_back = params[:redirect_back]
-    redirect_to redirect_back if redirect_back && !redirect_back.empty? && path_exists?(redirect_back)
-    redirect_to default
+    if redirect_back && !redirect_back.empty? && path_exists?(redirect_back)
+      redirect_to redirect_back
+    else
+      redirect_to default
+    end
   end
 
   private

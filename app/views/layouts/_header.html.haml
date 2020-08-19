@@ -5,6 +5,8 @@
         %ul.navbar-nav.mr-auto
           %li.nav-item
             = link_to "Home", root_path, class: "nav-link"
+          %li.nav-item
+            = link_to "+Ask", new_question_path, class: "nav-link"
       .collapse.navbar-collapse
         %ul.navbar-nav.ml-auto
           - if logged_in?
