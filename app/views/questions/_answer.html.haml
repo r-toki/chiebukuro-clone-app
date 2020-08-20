@@ -1,7 +1,26 @@
 %li.list-group-item
+  -# Answer Header
   %h6.card-subtitle.text-muted.mt-1.mb-2
     %span
       = link_to answer.user.name, answer.user
       \/
       = "answerd #{answer.created_at.strftime('%F %R')}"
-  %p.card-text= answer.content
+
+  -# Best Answer Block
+  - if best
+    .bg-warning.text-white.d-inline-block.rounded-pill.px-2.pb-1.mb-1
+      %small Best Answer
+      %i.fas.fa-star.fa-xs
+      %i.fas.fa-star.fa-xs
+      %i.fas.fa-star.fa-xs
+
+  -# Answer Body
+  %p.card-text.mb-0= answer.content
+
+  -# Choosing the Best Answer Block
+  - if !resolved && is_correct_user
+    .float-right
+      = form_with(url: answer_path, scope: :answer, local: true, method: :put) do |f|
+        = f.hidden_field :best, value: true
+        = f.hidden_field :question_id, value: answer.question_id
+        = f.submit "Choose the Best Answer", class: "btn btn-outline-success btn-sm"

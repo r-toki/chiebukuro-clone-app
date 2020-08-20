@@ -23,3 +23,4 @@
 
 - answers table に best column があるならば、questions table に resolved は要らない？
 - questions/1 で render されるページに new_answer_form があっていいのか？仕方がない気がするが。
+- answer update で best を更新することと content を更新することは同じコントロール内で処理していいのか？

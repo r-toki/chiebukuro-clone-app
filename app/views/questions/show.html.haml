@@ -1,5 +1,5 @@
 .max-width-34.mx-auto
-
+  -# Question Block
   .card
     .card-body
       %h3.card-title= @question.title
@@ -10,11 +10,15 @@
           = "asked #{@question.created_at.strftime('%F %R')}"
       %p.card-text= @question.content
 
+  -# Answers Block
   %br
   %h5= pluralize(@question.answers.count, "Answer")
   %ul.list-group
-    = render partial: "answer", collection: @answers
+    - if @best_answer
+      = render partial: "answer", object: @best_answer, locals: { resolved: @question.resolved, best: true, is_correct_user: false }
+    = render partial: "answer", collection: @answers, locals: { resolved: @question.resolved, best: false, is_correct_user: @is_correct_user }
 
+  -# Answer Form Block
   %br
   - if logged_in?
     %h5 Your Answer

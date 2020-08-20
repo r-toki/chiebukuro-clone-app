@@ -5,14 +5,21 @@ class AnswersController < ApplicationController
   def create
     answer = current_user.answers.build(answer_params)
     if answer.save
-      flash[:success] = "Answer created!"
+      flash[:success] = "Answer created"
     else
-      flash[:danger] = "Invalid Answer"
+      flash[:danger] = "Failed to create Answer"
     end
     redirect_to answer.question
   end
 
   def update
+    answer = Answer.find(params[:id])
+    if answer.update(answer_params)
+      flash[:success] = "Answer updated"
+    else
+      flash[:danger] = "Failed to update Answer"
+    end
+    redirect_to answer.question
   end
 
   def destroy
@@ -21,7 +28,7 @@ class AnswersController < ApplicationController
   private
 
     def answer_params
-      params.require(:answer).permit(:content, :user_id, :question_id)
+      params.require(:answer).permit(:content, :best, :user_id, :question_id)
     end
 
 end
