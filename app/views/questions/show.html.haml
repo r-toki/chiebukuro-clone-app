@@ -14,7 +14,7 @@
   %br
   %h5= pluralize(@question.answers.count, "Answer")
   %ul.list-group
-    - if @best_answer
+    - if @question.resolved
       = render partial: "best_answer", object: @best_answer, as: :answer
       = render partial: "other_answer", collection: @other_answers, as: :answer, locals: { is_question_resolved: true }
     - else
@@ -22,13 +22,14 @@
 
   -# Answer Form Block
   %br
-  - if logged_in?
-    %h5 Your Answer
-    = form_with(url: answers_path, scope: :answer, local: true) do |f|
-      .form-group
-        = f.text_area :content, rows: 5, class: "form-control"
-      = f.hidden_field :question_id, value: @question.id
-      = f.hidden_field :user_id, value: current_user.id
-      = f.submit "Post", class: "btn btn-primary"
-  - else
-    %h5= link_to "Log in to Answer", new_session_path(redirect_back: request.original_fullpath)
+  - if !@question.resolved
+    - if logged_in?
+      %h5 Your Answer
+      = form_with(url: answers_path, scope: :answer, local: true) do |f|
+        .form-group
+          = f.text_area :content, rows: 5, class: "form-control"
+        = f.hidden_field :question_id, value: @question.id
+        = f.hidden_field :user_id, value: current_user.id
+        = f.submit "Post", class: "btn btn-primary"
+    - else
+      %h5= link_to "Log in to Answer", new_session_path(redirect_back: request.original_fullpath)
