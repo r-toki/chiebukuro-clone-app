@@ -1,0 +1,6 @@
+%li.list-group-item
+  %h5= link_to(question.title, question)
+  %span
+    = pluralize(question.answers.length, "answer")
+    \/
+    = question.created_at.strftime('%F %R')

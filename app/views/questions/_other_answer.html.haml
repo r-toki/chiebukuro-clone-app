@@ -12,7 +12,5 @@
   -# Choosing the Best Answer Block
   - if !is_question_resolved && current_user == answer.question.user
     .float-right
-      = form_with(url: answer_path, scope: :answer, local: true, method: :put) do |f|
-        = f.hidden_field :best, value: true
-        = f.hidden_field :question_id, value: answer.question_id
-        = f.submit "Choose the Best Answer", class: "btn btn-outline-success btn-sm"
+      = form_with(url: question_best_answer_path(question_id: answer.question.id, id: answer.id), method: :put) do |f|
+        = f.submit "Choose the Best Answer", data: { confirm: "Would you choose it as your best answer?" }, class: "btn btn-outline-success btn-sm"

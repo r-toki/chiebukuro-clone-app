@@ -1,0 +1,6 @@
+.max-width-34.mx-auto
+  %h1.text-center= index_page_title
+  = will_paginate
+  %ul.list-group.mb-3
+    = render partial: "question", collection: @questions
+  = will_paginate

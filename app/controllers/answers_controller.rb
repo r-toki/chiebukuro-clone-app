@@ -12,16 +12,6 @@ class AnswersController < ApplicationController
     redirect_to answer.question
   end
 
-  def update
-    answer = Answer.find(params[:id])
-    if answer.update(answer_params)
-      flash[:success] = "Answer updated"
-    else
-      flash[:danger] = "Failed to update Answer"
-    end
-    redirect_to answer.question
-  end
-
   def destroy
   end
 
