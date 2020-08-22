@@ -15,8 +15,10 @@
   %h5= pluralize(@question.answers.count, "Answer")
   %ul.list-group
     - if @best_answer
-      = render partial: "answer", object: @best_answer, locals: { resolved: @question.resolved, best: true, is_correct_user: false }
-    = render partial: "answer", collection: @answers, locals: { resolved: @question.resolved, best: false, is_correct_user: @is_correct_user }
+      = render partial: "best_answer", object: @best_answer, as: :answer
+      = render partial: "other_answer", collection: @other_answers, as: :answer, locals: { is_question_resolved: true }
+    - else
+      = render partial: "other_answer", collection: @other_answers, as: :answer, locals: { is_question_resolved: false }
 
   -# Answer Form Block
   %br

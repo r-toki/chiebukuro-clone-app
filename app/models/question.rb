@@ -6,10 +6,8 @@ class Question < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  attr_accessor :resolved
-
-  def set_resolved
-    self.resolved = self.answers.where(best: true).count == 1
+  def resolved
+    @resolved = @resolved.nil? ? self.answers.where(best: true).count == 1 : @resolved
   end
 
 end

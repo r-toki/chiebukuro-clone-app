@@ -6,19 +6,11 @@
       \/
       = "answerd #{answer.created_at.strftime('%F %R')}"
 
-  -# Best Answer Block
-  - if best
-    .bg-warning.text-white.d-inline-block.rounded-pill.px-2.pb-1.mb-1
-      %small Best Answer
-      %i.fas.fa-star.fa-xs
-      %i.fas.fa-star.fa-xs
-      %i.fas.fa-star.fa-xs
-
   -# Answer Body
   %p.card-text.mb-0= answer.content
 
   -# Choosing the Best Answer Block
-  - if !resolved && is_correct_user
+  - if !is_question_resolved && current_user == answer.question.user
     .float-right
       = form_with(url: answer_path, scope: :answer, local: true, method: :put) do |f|
         = f.hidden_field :best, value: true

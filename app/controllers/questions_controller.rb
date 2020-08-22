@@ -21,11 +21,9 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @question.set_resolved
-    @is_correct_user = current_user == @question.user
 
     @best_answer = @question.answers.find_by(best: true)
-    @answers = @question.answers.where(best: nil).includes(:user)
+    @other_answers = @question.answers.where(best: nil).includes(:user)
   end
 
   def update
