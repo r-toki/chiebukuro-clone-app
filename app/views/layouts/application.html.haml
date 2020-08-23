@@ -12,5 +12,6 @@
   %body
     = render 'layouts/header'
     .max-width-44.mx-auto.px-3.py-3
+      = breadcrumbs separator: " &rsaquo; "
       = render 'layouts/flash'
       = yield
