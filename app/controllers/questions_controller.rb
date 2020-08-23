@@ -32,7 +32,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     question = Question.find(params[:id])
-    if question.answers.count == 0 && question.user_id == current_user.id
+    if question.answers.count == 0 && question.user == current_user
       question.destroy
       flash[:success] = "Qeustion deleted"
     end

@@ -2,7 +2,7 @@ module Questions
   class BestAnswersController < ApplicationController
     def update
       question = Question.find(params[:question_id])
-      if current_user.id == question.user_id
+      if current_user == question.user
         answer = Answer.find(params[:id])
         answer.update(best: true)
       end
