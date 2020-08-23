@@ -8,6 +8,9 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    if params[:question]
+      @question.assign_attributes(question_params)
+    end
   end
 
   def create
@@ -37,10 +40,12 @@ class QuestionsController < ApplicationController
     end
 
     def get_questions_with_resolved_query
+      resolved_question_ids = Question.joins(:answers).where("answers.best == true").pluck(:id)
       if params[:resolved] ==  "true"
-        Question.joins(:answers).where("answers.best == true")
+        Question.where(id: resolved_question_ids)
       else
-        Question.joins('LEFT OUTER JOIN "answers" ON "answers"."question_id" = "questions"."id" AND ("answers""id" = NULL OR "answers""best" =  NULL)')
+        all_question_ids = Question.all.pluck(:id)
+        Question.where(id: all_question_ids - resolved_question_ids)
       end
     end
 

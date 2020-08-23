@@ -1,2 +1,29 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.max-width-34.mx-auto
+  -# Question New Form
+  %h3 Ask a Question!
+  = form_with(url: new_question_path, method: :get, scope: :question, local: true) do |f|
+    .form-group
+      = f.text_area :content, class: "form-control mb-2"
+      = f.submit "Ask", class: "btn btn-primary"
+
+  -# Resolved Questions List
+  %h3 Resolved Questions
+  %ul.list-group
+    - @resolved_questions.each do |question|
+      %li.list-group-item
+        = link_to question.title, question
+    %li.list-group-item.clearfix
+      .float-right
+        = link_to "See more", questions_path(resolved: "true")
+
+  %br/
+
+  -# Unesolved Questions List
+  %h3 Unresolved Questions
+  %ul.list-group
+    - @unresolved_questions.each do |question|
+      %li.list-group-item
+        = link_to question.title, question
+    %li.list-group-item.clearfix
+      .float-right
+        = link_to "See more", questions_path(resolved: "false")
