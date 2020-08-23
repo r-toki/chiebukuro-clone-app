@@ -1,0 +1,7 @@
+%nav.navbar.navbar-expand-sm.navbar-light.bg-light
+  .collaspe.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item
+        = link_to "Posted", user_questions_path(type: "posted"), class: "nav-link #{current_questions_type?("posted")}"
+      %li.nav-item
+        = link_to "Answered", user_questions_path(type: "answered"), class: "nav-link #{current_questions_type?("answered")}"

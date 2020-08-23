@@ -1,0 +1,7 @@
+.max-width-34.mx-auto
+  %h3.text-center= "#{@user.name}'s Page"
+  = render partial: 'header'
+  = will_paginate
+  %ul.list-group.mb-3
+    = render partial: 'questions/question', collection: @questions
+  = will_paginate
