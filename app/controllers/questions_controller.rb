@@ -31,6 +31,12 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    question = Question.find(params[:id])
+    if question.answers.count == 0 && question.user_id == current_user.id
+      question.destroy
+      flash[:success] = "Qeustion deleted"
+    end
+      redirect_to current_user || root_url
   end
 
   private

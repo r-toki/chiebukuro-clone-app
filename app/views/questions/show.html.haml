@@ -8,6 +8,10 @@
           = link_to @question.user.name, @question.user
           \/
           = "asked #{@question.created_at.strftime('%F %R')}"
+          - if @question.answers.count == 0 && @question.user_id == current_user.id
+            \/
+            = link_to "delete", @question, method: :delete, data: { confirm: "Would you like to delete it?" }
+
       %p.card-text= @question.content
 
   -# Answers Block

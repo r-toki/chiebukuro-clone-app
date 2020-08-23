@@ -13,6 +13,12 @@ class AnswersController < ApplicationController
   end
 
   def destroy
+    answer = Answer.find(params[:id])
+    if !answer.question.resolved && answer.user_id == current_user.id
+      answer.destroy
+      flash[:success] = "Answer deleted"
+    end
+      redirect_to request.referrer || root_url
   end
 
   private
