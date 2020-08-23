@@ -5,6 +5,9 @@
       = link_to answer.user.name, answer.user
       \/
       = "answerd #{answer.created_at.strftime('%F %R')}"
+      - if !is_question_resolved && current_user.id == answer.user_id
+        \/
+        = link_to "delete", answer, method: :delete, data: { confirm: "Would you like to delete it?" }
 
   -# Answer Body
   %p.card-text.mb-0= answer.content

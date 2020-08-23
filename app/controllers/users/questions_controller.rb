@@ -15,7 +15,7 @@ module Users
           Question.joins(
             "INNER JOIN answers ON answers.question_id = questions.id
             WHERE answers.user_id = #{params[:user_id]}"
-          ).uniq
+          ).distinct
         end
       end
 
