@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
     end
 
     def get_questions_with_resolved_query
-      resolved_question_ids = Question.joins(:answers).where("answers.best == true").pluck(:id)
+      resolved_question_ids = Question.joins(:answers).where("answers.best = true").pluck(:id)
       if params[:resolved] ==  "true"
         Question.where(id: resolved_question_ids)
       else
