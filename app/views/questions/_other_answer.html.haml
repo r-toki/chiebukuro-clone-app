@@ -1,19 +1,17 @@
 %li.list-group-item
-  -# Answer Header
-  %h6.card-subtitle.text-muted.mt-1.mb-2
+  -# Answer Body
+  %p.card-text.mb-0= answer.content
+
+  -# Answer Footer
+  %footer.text-muted
     %span
       = link_to answer.user.name, answer.user
       \/
       = "answerd #{answer.created_at.strftime('%F %R')}"
       - if !is_question_resolved && answer.user == current_user
         \/
-        = link_to "delete", answer, method: :delete, data: { confirm: "Would you like to delete it?" }
-
-  -# Answer Body
-  %p.card-text.mb-0= answer.content
-
-  -# Choosing the Best Answer Block
-  - if !is_question_resolved && current_user == answer.question.user
-    .float-right
-      = form_with(url: question_best_answer_path(question_id: answer.question.id, id: answer.id), method: :put) do |f|
-        = f.submit "Choose the Best Answer", data: { confirm: "Would you choose it as your best answer?" }, class: "btn btn-outline-success btn-sm"
+        = link_to fa_icon("trash", class: "text-muted"), answer, method: :delete, data: { confirm: "Would you like to delete it?" }
+      -# Choosing the Best Answer Block
+      - if !is_question_resolved && current_user == answer.question.user
+        \/
+        = link_to fa_icon("star", class: "text-warning"), question_best_answer_path(question_id: answer.question,id: answer.id),　method: :put, data: { confirm: "Would you choose it as your best answer?" }

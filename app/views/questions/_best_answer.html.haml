@@ -1,18 +1,18 @@
 %li.list-group-item
-  -# Answer Header
-  %h6.card-subtitle.text-muted.mt-1.mb-2
-    %span
-      = link_to answer.user.name, answer.user
-      \/
-      = "answerd #{answer.created_at.strftime('%F %R')}"
-
   -# Best Answer Tag Block
   .best_answer_tag
     %span Best Answer
     .best_answer_stars
-      %i.fas.fa-star
-      %i.fas.fa-star
-      %i.fas.fa-star
+      = fa_icon("star")
+      = fa_icon("star")
+      = fa_icon("star")
 
   -# Answer Body
   %p.card-text.mb-0= answer.content
+
+  -# Answer Footer
+  %footer.text-muted
+    %span
+      = link_to answer.user.name, answer.user
+      \/
+      = "answerd #{answer.created_at.strftime('%F %R')}"

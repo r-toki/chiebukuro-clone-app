@@ -6,7 +6,8 @@
   .card
     .card-body
       %h4.card-title= @question.title
-      %h6.card-subtitle.text-muted.mb-2
+      %p.card-text= @question.content
+      %footer.text-muted
         %span
           = link_to @question.user.name, @question.user
           \/
@@ -14,8 +15,6 @@
           - if @question.answers.count == 0 && @question.user == current_user
             \/
             = link_to "delete", @question, method: :delete, data: { confirm: "Would you like to delete it?" }
-
-      %p.card-text= @question.content
 
   -# Answers Block
   %br
