@@ -37,8 +37,11 @@
 }
 
 .fa-trash:hover {
-  color: black !important;
+  color: blue !important;
 }
-.fa-star:hover {
-  color: #ffc107 !important;
+
+.other-answer-footer {
+  .fa-star:hover {
+    color: #ffc107 !important;
+  }
 }
