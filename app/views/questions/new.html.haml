@@ -4,8 +4,34 @@
     = render 'shared/error_messages', object: f.object
     .form-group
       = f.label :title
-      = f.text_field :title, class: "form-control"
+      = f.text_field :title, class: "form-control title-area"
     .form-group
       = f.label :content
-      = f.text_area :content, rows: 10, class: "form-control"
-    = f.submit "Post", class: "btn btn-primary"
+      = f.text_area :content, rows: 10, class: "form-control content-area"
+    = f.submit "Post", class: "btn btn-primary post-button"
+
+:javascript
+  $(document).ready(function(){
+    var titleArea = $('.title-area')
+    var contentArea = $('.content-area')
+    var postButton = $('.post-button')
+    var isPostButtonDisabled = function() {
+      return titleArea.val().length === 0 || contentArea.val().length === 0
+    }
+    var updatePostButtonDisabledProp = function() {
+      if (isPostButtonDisabled()) {
+        postButton.prop('disabled', true)
+      } else {
+        postButton.prop('disabled', false)
+      }
+    }
+
+    postButton.prop('disabled', true)
+
+    titleArea.keyup(function(){
+      updatePostButtonDisabledProp()
+    })
+    contentArea.keyup(function(){
+      updatePostButtonDisabledProp()
+    })
+  })

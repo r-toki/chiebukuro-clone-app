@@ -37,8 +37,16 @@
       %h5 Your Answer
       = form_with(url: answers_path, scope: :answer, local: true) do |f|
         .form-group
-          = f.text_area :content, rows: 5, class: "form-control"
+          = f.text_area :content, rows: 5, class: "form-control content-area"
         = f.hidden_field :question_id, value: @question.id
-        = f.submit "Post", class: "btn btn-primary"
+        = f.submit "Post", class: "btn btn-primary post-button"
     - else
       %h5= link_to "Log in to Answer", new_session_path(redirect_back: request.original_fullpath)
+
+:javascript
+  $(document).ready(function(){
+    $('.post-button').prop('disabled', true)
+    $('.content-area').keyup(function(){
+      $('.post-button').prop('disabled', this.value == "" ? true : false)
+    })
+  })

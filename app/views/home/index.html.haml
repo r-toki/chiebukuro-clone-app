@@ -3,8 +3,8 @@
   %h3 Ask a Question!
   = form_with(url: new_question_path, method: :get, scope: :question, local: true) do |f|
     .form-group
-      = f.text_area :content, class: "form-control mb-2"
-      = f.submit "Ask", class: "btn btn-primary"
+      = f.text_area :content, class: "form-control mb-2 content-area"
+      = f.submit "Ask", class: "btn btn-primary ask-button"
 
   -# Resolved Questions List
   %h3 Resolved Questions
@@ -27,3 +27,11 @@
     %li.list-group-item.clearfix
       .float-right
         = link_to "See more", questions_path(resolved: "false")
+
+:javascript
+  $(document).ready(function(){
+    $('.ask-button').prop('disabled', true)
+    $('.content-area').keyup(function(){
+      $('.ask-button').prop('disabled', this.value == "" ? true : false)
+    })
+  })

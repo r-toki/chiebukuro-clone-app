@@ -4,15 +4,15 @@
     = render 'shared/error_messages', object: f.object
     .form-group
       = f.label :name
-      = f.text_field :name, class: "form-control"
+      = f.text_field :name, class: "form-control name-area"
     .form-group
       = f.label :password
-      = f.password_field :password, class: "form-control"
+      = f.password_field :password, class: "form-control password-area"
     .form-group
       = f.label :password_confirmation, "Confirmation"
-      = f.password_field :password_confirmation, class: "form-control"
+      = f.password_field :password_confirmation, class: "form-control password-confirmation-area"
     = hidden_field_tag "redirect_back", params[:redirect_back]
-    = f.submit "Sign up", class: "btn btn-primary"
+    = f.submit "Sign up", class: "btn btn-primary sign-up-button"
   %br
   Already have an account?
   = link_to "Log in", new_session_path(redirect_back: params[:redirect_back])
