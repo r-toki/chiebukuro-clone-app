@@ -1,10 +1,14 @@
 - breadcrumb :question, @question
 %br/
 
-.max-width-34.mx-auto
+.max-width-34.mx-auto.question-page
   -# Question Block
   .card
     .card-body
+      - if @question.resolved
+        .tag.bg-warning.mb-3 Resolved
+      - else
+        .tag.bg-dark.mb-3 Unresolved
       %h4.card-title= @question.title
       %p.card-text= @question.content
       %footer.text-muted

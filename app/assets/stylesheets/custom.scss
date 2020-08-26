@@ -12,7 +12,15 @@
   max-width: 480px;
 }
 
-.best_answer_tag {
+.fa-trash:hover {
+  color: blue !important;
+}
+
+.fa-star:hover {
+  color: #ffc107 !important;
+}
+
+.tag {
   display: inline-block;
   margin-bottom: 4px;
   padding: 4px 12px;
@@ -20,28 +28,5 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 1.33;
-  background-image: linear-gradient(
-      253deg,
-      rgba(255, 211, 52, 0.9),
-      rgba(255, 167, 1, 0.9)
-    ),
-    linear-gradient(180deg, rgba(255, 167, 1, 0.9), rgba(255, 167, 1, 0.9));
   border-radius: 12px;
-
-  .best_answer_stars {
-    display: inline-block;
-    height: 12px;
-    margin-left: 3px;
-    line-height: 12px;
-  }
-}
-
-.fa-trash:hover {
-  color: blue !important;
-}
-
-.other-answer-footer {
-  .fa-star:hover {
-    color: #ffc107 !important;
-  }
 }

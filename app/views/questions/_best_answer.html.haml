@@ -1,5 +1,8 @@
 %li.list-group-item
 
+  -# Best Answer Tag
+  .tag.bg-warning
+    %span Best Answer
 
   -# Answer Body
   %p.card-text.mb-0= answer.content
@@ -10,11 +13,3 @@
       = link_to answer.user.name, answer.user
       \/
       = "answerd #{answer.created_at.strftime('%F %R')}"
-      -# Best Answer Tag Block
-      \/
-      .best_answer_tag
-        %span Best Answer
-        .best_answer_stars
-          = fa_icon("star")
-          = fa_icon("star")
-          = fa_icon("star")
