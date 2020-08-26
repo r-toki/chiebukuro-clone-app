@@ -1,6 +1,6 @@
 module QuestionsHelper
 
-  def index_page_title
+  def questions_index_page_title
     if params[:resolved] == "true"
       "Resolved Questions"
     else

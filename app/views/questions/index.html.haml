@@ -1,5 +1,8 @@
+- breadcrumb :questions
+%br/
+
 .max-width-34.mx-auto
-  %h2.text-center= index_page_title
+  %h2.text-center= questions_index_page_title
   = will_paginate
   %ul.list-group.mb-3
     = render partial: "question", collection: @questions
