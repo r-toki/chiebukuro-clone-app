@@ -3,7 +3,7 @@
   %p.card-text.mb-0= answer.content
 
   -# Answer Footer
-  %footer.text-muted
+  %footer.text-muted.other-answer-footer
     %span
       = link_to answer.user.name, answer.user
       \/
@@ -14,4 +14,4 @@
       -# Choosing the Best Answer Block
       - if !is_question_resolved && current_user == answer.question.user
         \/
-        = link_to fa_icon("star", class: "text-warning"), question_best_answer_path(question_id: answer.question,id: answer.id),　method: :put, data: { confirm: "Would you choose it as your best answer?" }
+        = link_to fa_icon("star", class: "text-muted"), question_best_answer_path(question_id: answer.question,id: answer.id),　method: :put, data: { confirm: "Would you choose it as your best answer?" }

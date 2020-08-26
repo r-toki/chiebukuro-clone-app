@@ -14,7 +14,7 @@
           = "asked #{@question.created_at.strftime('%F %R')}"
           - if @question.answers.count == 0 && @question.user == current_user
             \/
-            = link_to "delete", @question, method: :delete, data: { confirm: "Would you like to delete it?" }
+            = link_to fa_icon("trash", class: "text-muted"), @question, method: :delete, data: { confirm: "Would you like to delete it?" }
 
   -# Answers Block
   %br
